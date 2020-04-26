@@ -1,5 +1,44 @@
-<h1>{{ post.title }}</h1>
+<!doctype html>
+<html lang="en">
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>The Dundie | Paper for your thoughts?</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 
-<p>{{post.description}}</p>
+<body>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+        <div class="container">
+            <h1 class="display-3">The Dundie</h1>
+            <p>A paper for your thoughts?</p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Add New Post »</a></p>
+        </div>
+    </div>
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8 blog-main">
+                <div class="blog-post">
+                    <h2 class="blog-post-title">{{post.title}}</h2>
+                    <p class="blog-post-meta">{{post.created_date}} by <a href="#">{{post.author.name}}</a></p>
+                    <p>{{post.description}}</p>
+                </div><!-- /.blog-post -->
+            </div>
+        </div><!-- /.row -->
+    </main>
+    <footer>
+        <hr>
+        <div class="container">
+            <p>Take-home test for SmallCloud Technologies completed by <a
+                    href="https://twitter.com/nickkomarnicki">@nickkomarnicki</a>.</p>
+            <p>
+                <a href="../../blog">Home</a>
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>
