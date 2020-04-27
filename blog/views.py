@@ -23,6 +23,15 @@ def newpost(request):
         'authors': authors,
     }
     return render(request, 'blog/newpost.html', context)
+
+def editpost(request, post_id):
+    authors = Author.objects.all()
+    post = Post.objects.get(pk=post_id)
+    context = {
+        'authors': authors,
+        'post': post,
+    }
+    return render(request, 'blog/newpost.html', context)
     
 def addpost(request):
     try:
@@ -32,12 +41,23 @@ def addpost(request):
         title = post_data.get('title')
         description = post_data.get('description')
         created_date = timezone.now()
-        post = Post(author=author, title=title, description=description, created_date=created_date)
+        if post_data.get('post_id'):
+            post_id = post_data.get('post_id')
+            post = Post.objects.get(pk=post_id)
+            post.author = author
+            post.title = title
+            post.description = description
+            msg = 'updated'
+        else:
+            post = Post(author=author, title=title, description=description, created_date=created_date)
+            msg = 'saved'
+
         post.save()
-        print('saved')
         success = True
-    except:
+        print(msg)
+    except Exception as err:
         print('Failed to create a new post')
+        print(err)
         success = False
         
     if success:

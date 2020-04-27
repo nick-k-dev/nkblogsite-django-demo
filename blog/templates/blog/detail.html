@@ -15,13 +15,13 @@
         <div class="container">
             <h1 class="display-3">The Dundie</h1>
             <p>A paper for your thoughts?</p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Add New Post »</a></p>
+            <p><a class="btn btn-primary btn-lg" href="{% url 'blog:editpost' post.id %}" role="button">Edit Post »</a></p>
         </div>
     </div>
     <main role="main" class="container">
         <div class="row">
             <div class="col-md-8 blog-main">
-                <img src="{{post.author.img_url}}" class="rounded float-right" alt="...">
+                <img style="width: 20vw; height: 20vh; object-fit: contain;" src="{{post.author.img_url}}" class="rounded float-right img-responsive" alt="image of the author">
                 <div class="blog-post">
                     <h2 class="blog-post-title">{{post.title}}</h2>
                     <p class="blog-post-meta">{{post.created_date}} by <a href="#">{{post.author.name}}</a></p>
@@ -36,7 +36,7 @@
             <p>Take-home test for SmallCloud Technologies completed by <a
                     href="https://twitter.com/nickkomarnicki">@nickkomarnicki</a>.</p>
             <p>
-                <a href="../../blog">Home</a>
+                <a href="{% url 'blog:index' %}">Home</a>
             </p>
         </div>
     </footer>
