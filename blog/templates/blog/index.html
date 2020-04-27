@@ -7,6 +7,8 @@
     <title>The Dundie | Paper for your thoughts?</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
 </head>
 
 <body>
@@ -26,7 +28,8 @@
                 <div class="col-md-8">
                     <div
                         class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                        <div class="col p-4 d-flex flex-column position-static">
+                        <div class="card col p-4 d-flex flex-column position-static">
+                            <img src="{{ post.author.img_url }}" class="card-img-top" alt="...">
                             <strong class="d-inline-block mb-2 text-primary">{{post.author.name}}</strong>
                             <h3 class="mb-0">{{post.title}}</h3>
                             <div class="mb-1 text-muted">{{post.created_date}}</div>
