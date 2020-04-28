@@ -1,76 +1,36 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>The Dundie | Paper for your thoughts?</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{% url 'blog:index' %}">The Dundie</a>
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'blog:newpost' %}">Create New Post</a>
-            </li>
-          </ul>
+{% extends 'blog/base.html' %}
+{% block jumbo_text %}
+<p><em>"A blank sheet of paper equals endless possibilities"</em> - <strong>Michael Scott</strong></p>
+{% endblock %}
+{% block content %}
+<main role="main" class="container">
+    <form action="{% url 'blog:addpost' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="author">Author</label>
+            <select class="form-control" id="author" name="author">
+                {% for author in authors %}
+                <option value="{{ author.id }}" {% if post.author.id == author.id %} selected {% endif %}>{{author}}
+                </option>
+                {% endfor %}
+            </select>
         </div>
-      </nav>
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-        <div class="container">
-            <h1 class="display-3">The Dundie</h1>
-            <p><em>"A blank sheet of paper equals endless possibilities"</em> - <strong>Michael Scott</strong></p>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" value='{{post.title}}' name="title" id="title"
+                placeholder="Post Title">
         </div>
-    </div>
-    <main role="main" class="container">
-        <form action="{% url 'blog:addpost' %}" method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="author">Author</label>
-                <select class="form-control" id="author" name="author">
-                    {% for author in authors %}
-                    <option value="{{ author.id }}" {% if post.author.id == author.id %} selected {% endif %}>{{author}}
-                    </option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" value='{{post.title}}' name="title" id="title"
-                    placeholder="Post Title">
-            </div>
-            <div class="form-group">
-                <label for="description">Body</label>
-                <textarea class="form-control" id="description" name="description"
-                    rows="10">{{post.description}}</textarea>
-            </div>
-            <input type="hidden" id="post_id" name="post_id" value="{{post.id}}">
-            {% if post %}
-            <a class="btn btn-warning text-light" href="{% url 'blog:index' %}">Cancel</a>
-            <button type="submit" class="btn btn-primary">Update</button>
-            {% else %}
-            <button type="submit" class="btn btn-primary">Post</button>
-            {% endif %}
-        </form>
-    </main>
-    <footer>
-        <hr>
-        <div class="container">
-            <p class="footer-text">Take-home test for SmallCloud Technologies completed by <a
-                    href="https://twitter.com/nickkomarnicki">@nickkomarnicki</a>.</p>
-            <p>
-                <a class="home-button" href="{% url 'blog:index' %}">Home</a>
-            </p>
+        <div class="form-group">
+            <label for="description">Body</label>
+            <textarea class="form-control" id="description" name="description" rows="10">{{post.description}}</textarea>
         </div>
-        <div class="footer-container">
-        </div>
-    </footer>
-</body>
-
-</html>
+        <input type="hidden" id="post_id" name="post_id" value="{{post.id}}">
+        {% if post %}
+        <a class="btn btn-warning text-light" href="{% url 'blog:index' %}">Cancel</a>
+        <button type="submit" class="btn btn-primary">Update</button>
+        {% else %}
+        <button type="submit" class="btn btn-primary">Post</button>
+        {% endif %}
+    </form>
+</main>
+{% endblock %}

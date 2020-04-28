@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>The Dundie | Paper for your thoughts?</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'blog:index' %}">Home</a>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'blog:newpost' %}">Create New Post</a>
+            </li>
+        </ul>
+        </div>
+    </nav>
+    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+        <div class="container">
+            <h1 class="display-3">The Dundie</h1>
+            <p>{% block jumbo_text %}A paper for your thoughts?{% endblock %}</p>
+        </div>
+    </div>
+    {% block content %}{% endblock %}
+    <hr>
+    <footer>
+        {% block about_footer %} {% endblock %}
+        <div class="container">
+            <p>
+                <a class="home-button" href="#">Back to top</a>
+            </p>
+            <p class="footer-text">Take-home test for SmallCloud Technologies completed by <a
+                    href="https://twitter.com/nickkomarnicki">@nickkomarnicki</a>.</p>
+        </div>
+        <div class="footer-container">
+        </div>
+    </footer>
+</body>
+
+</html>
