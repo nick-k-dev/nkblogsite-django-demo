@@ -2,8 +2,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-from django.utils import timezone
-
+from django.utils import dateformat, timezone
+from django.contrib import messages
 from .models import Post, Author
 
 class IndexView(generic.ListView):
@@ -49,16 +49,19 @@ def addpost(request):
             post.author = author
             post.title = title
             post.description = description
-            msg = 'updated'
+            msg = 'Post ' + post.title + ' has been updated - ' + dateformat.format(timezone.now(), 'Y-m-d H:i:s')
         else:
             post = Post(author=author, title=title, description=description, created_date=created_date)
-            msg = 'saved'
+            msg = 'New post ' + post.title + ' has been created - ' + dateformat.format(timezone.now(), 'Y-m-d H:i:s')
 
         post.save()
         success = True
         print(msg)
+        messages.success(request, msg)
     except Exception as err:
-        print('Failed to create a new post')
+        msg = 'Failed to create or update a new post...'
+        print(msg)
+        messages.error(request, msg)
         print(err)
         success = False
         

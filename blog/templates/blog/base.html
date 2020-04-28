@@ -27,6 +27,13 @@
             <p>{% block jumbo_text %}A paper for your thoughts?{% endblock %}</p>
         </div>
     </div>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        {{message}}
+      </div>
+    {% endfor %}
+    {% endif %}
     {% block content %}{% endblock %}
     <hr>
     <footer>
