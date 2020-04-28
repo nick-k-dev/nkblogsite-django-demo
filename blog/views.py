@@ -22,7 +22,7 @@ def newpost(request):
     context = {
         'authors': authors,
     }
-    return render(request, 'blog/newpost.html', context)
+    return render(request, 'blog/postform.html', context)
 
 def editpost(request, post_id):
     authors = Author.objects.all()
@@ -31,7 +31,7 @@ def editpost(request, post_id):
         'authors': authors,
         'post': post,
     }
-    return render(request, 'blog/newpost.html', context)
+    return render(request, 'blog/postform.html', context)
     
 def addpost(request):
     try:
@@ -41,6 +41,8 @@ def addpost(request):
         title = post_data.get('title')
         description = post_data.get('description')
         created_date = timezone.now()
+
+        #Update if existing post otherwise create one
         if post_data.get('post_id'):
             post_id = post_data.get('post_id')
             post = Post.objects.get(pk=post_id)
