@@ -32,8 +32,8 @@
     <main role="main" class="container">
         <div class="row">
             <div class="col-md-8 blog-main">
-                <img style="width: 20vw; height: 20vh; object-fit: contain;" src="{{post.author.img_url}}"
-                    class="rounded float-right img-responsive" alt="image of the author">
+                <img src="{{post.author.img_url}}"
+                    class="float-right img-responsive detail-image" alt="image of the author">
                 <div class="blog-post">
                     <h2 class="blog-post-title">{{post.title}}</h2>
                     <p class="blog-post-meta">{{post.created_date}} by <a href="#">{{post.author.name}}</a></p>
