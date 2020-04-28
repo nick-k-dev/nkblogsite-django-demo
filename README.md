@@ -4,8 +4,10 @@
 A simple blog site created using Django/Python for the backend and frontend.
 
 ### To Run
-From the root of the project: `python manage.py runserver`
-By default the project will run in the broswer at `localhost:8000/blog`
+From the root of the project:  
+Install dependancies `pip install -r requirements.txt`  
+Start the server `python manage.py runserver`  
+By default the project will run in the broswer at `localhost:8000/blog`  
 
 ### Completed Functionality
 + Home page with a list view of posts
