@@ -12,11 +12,19 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'blog:index' %}">The Dundie</a>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'blog:newpost' %}">Create New Post</a>
+            </li>
+        </ul>
+        </div>
+    </nav>
     <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
         <div class="container">
             <h1 class="display-3">The Dundie</h1>
             <p>A paper for your thoughts?</p>
-            <p><a class="btn btn-primary btn-lg" href="{% url 'blog:newpost' %}" role="button">Add New Post »</a></p>
         </div>
     </div>
     <div class="container">
@@ -49,11 +57,13 @@
     <footer>
         <hr>
         <div class="container">
-            <p>Take-home test for SmallCloud Technologies completed by <a
+            <p class="footer-text">Take-home test for SmallCloud Technologies completed by <a
                     href="https://twitter.com/nickkomarnicki">@nickkomarnicki</a>.</p>
             <p>
-                <a href="#">Back to top</a>
+                <a class="home-button" href="#">Back to top</a>
             </p>
+        </div>
+        <div class="footer-container">
         </div>
     </footer>
 </body>
