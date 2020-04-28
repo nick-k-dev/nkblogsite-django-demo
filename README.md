@@ -1,6 +1,6 @@
-#The Dundie - Take home test
+# The Dundie - Take home test
 ---
-**Author**: Nick Komarnicki
+**Author**: Nick Komarnicki  
 A simple blog site created using Django/Python for the backend and frontend.
 
 ### Completed Functionality
