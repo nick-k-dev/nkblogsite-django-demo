@@ -3,6 +3,10 @@
 **Author**: Nick Komarnicki  
 A simple blog site created using Django/Python for the backend and frontend.
 
+### To Run
+From the root of the project: `python manage.py runserver`
+By default the project will run in the broswer at `localhost:8000/blog`
+
 ### Completed Functionality
 + Home page with a list view of posts
 
